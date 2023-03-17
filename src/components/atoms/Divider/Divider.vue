@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full border-b-2 border-[#d9d9d9]"></div>
+  <div class="w-full border-b-[1px] border-[#d9d9d9]"></div>
 </template>
 
 <script>

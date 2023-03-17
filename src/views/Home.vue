@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full px-7">
+  <div class="w-full">
     <ProductList :loading="loading" :products="products" />
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
   methods: {
     async fetchProduct() {
       const { loading, result } = await getAllProducts();
-      console.log(result);
+
       this.products = result.data;
       this.loading = loading;
     },

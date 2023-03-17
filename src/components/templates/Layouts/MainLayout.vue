@@ -2,7 +2,9 @@
   <div class="flex mx-auto bg-gray-100 shadow-md">
     <div class="w-full mt-3">
       <Navbar />
-      <router-view></router-view>
+      <div class="px-5 mt-3">
+        <router-view></router-view>
+      </div>
     </div>
     <CartSidebar class="max-w-[350px]" />
   </div>

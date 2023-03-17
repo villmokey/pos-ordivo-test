@@ -2,11 +2,11 @@ import { createRouter, createWebHistory } from "vue-router";
 import MainLayout from "@/components/templates/Layouts/MainLayout.vue";
 import Home from "@/views/Home.vue";
 import ProductDetail from "@/views/ProductDetail.vue";
+import Checkout from "@/views/Checkout.vue";
 
 const routes = [
   {
     path: "/",
-    name: "",
     component: MainLayout,
     children: [
       {
@@ -19,6 +19,11 @@ const routes = [
         name: "productDetail",
         component: ProductDetail,
         props: true,
+      },
+      {
+        path: "/checkout",
+        name: "checkout",
+        component: Checkout,
       },
     ],
   },
