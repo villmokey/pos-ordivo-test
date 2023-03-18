@@ -7,7 +7,11 @@
         <router-link to="/list/products/create"><button class="bg-blue-500 text-white rounded-md p-2">Tambah Produk</button></router-link>
       </div>
 
-      <Table :columns="tableColumns" :dataSource="items" :borderCell="false" :alternating="true" :searchValue="searchData" :bodyClass="'text-md py-3 font-light'" :headerClass="'text-left'" />
+      <Table :columns="tableColumns" :dataSource="items" :borderCell="false" :alternating="true" :searchValue="searchData" :bodyClass="'text-md py-3 font-light'" :headerClass="'text-left'">
+        <template #item-image="{ image }">
+          <img :src="renderImage(image)" alt="" />
+        </template>
+      </Table>
     </div>
   </div>
 </template>
@@ -56,6 +60,9 @@ export default {
 
         this.items = fetch;
       }
+    },
+    renderImage(src) {
+      return image(src);
     },
   },
 };

@@ -10,7 +10,9 @@
     :body-item-class-name="bodyClass"
     :body-row-class-name="bodyRowClass"
     :body-expand-row-class-name="bodyExpandClass"
-  />
+  >
+    <slot></slot>
+  </EasyDataTable>
 </template>
 
 <script>

@@ -24,9 +24,15 @@ export default {
   mounted() {
     this.fetchProduct();
   },
+  watch: {
+    $route() {
+      let searchParams = this.$route.query.search;
+      this.fetchProduct(`search=${searchParams}`);
+    },
+  },
   methods: {
-    async fetchProduct() {
-      const { loading, result } = await getAllProducts();
+    async fetchProduct(params = "") {
+      const { loading, result } = await getAllProducts(params);
 
       this.products = result.data;
       this.loading = loading;

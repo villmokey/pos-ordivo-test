@@ -27,7 +27,9 @@ export default {
     },
   },
   methods: {
-    onSearch() {},
+    onSearch() {
+      this.$router.push({ path: "/", query: { search: this.search } });
+    },
     onOpenMenu() {
       this.$emit("onChangeMenu");
     },

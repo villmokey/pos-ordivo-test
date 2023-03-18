@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = process.env.VUE_APP_API_URL;
 
-export const getAllProducts = async () => {
+export const getAllProducts = async (params) => {
   let loading = true;
   let error = null;
   let result = null;
@@ -10,7 +10,7 @@ export const getAllProducts = async () => {
   try {
     const req = await axios({
       method: "GET",
-      url: `${API_URL}/api/products`,
+      url: `${API_URL}/api/products?${params}`,
     });
 
     if (!req.data.status) {
