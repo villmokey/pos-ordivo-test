@@ -5,6 +5,12 @@ const carts = localStorage.getItem("carts") ? JSON.parse(localStorage.getItem("c
 export default createStore({
   state: {
     cart: carts,
+    customerData: {
+      customer_name: localStorage.getItem("customerName") && localStorage.getItem("customerName") !== "" ? JSON.parse(localStorage.getItem("customerName")) : "",
+      customer_address: localStorage.getItem("customerAddress") && localStorage.getItem("customerAddress") !== "" ? JSON.parse(localStorage.getItem("customerAddress")) : "",
+      customer_email: localStorage.getItem("customerEmail") && localStorage.getItem("customerEmail") !== "" ? JSON.parse(localStorage.getItem("customerEmail")) : "",
+      customer_phone: localStorage.getItem("customerPhone") && localStorage.getItem("customerPhone") !== "" ? JSON.parse(localStorage.getItem("customerPhone")) : "",
+    },
   },
   getters: {
     getCarts(state) {
@@ -18,10 +24,12 @@ export default createStore({
 
       return total;
     },
+    getCustomerData(state) {
+      return state.customerData;
+    },
   },
   mutations: {
     addCarts(state, payload) {
-      console.log(payload.carts);
       if (state.cart.length) {
         const findObject = state.cart.findIndex((obj) => obj.id === payload.carts.id);
 
@@ -55,6 +63,37 @@ export default createStore({
       }
 
       localStorage.setItem("carts", JSON.stringify(state.cart));
+    },
+    saveCustomerName(state, payload) {
+      state.customerData.customer_name = payload;
+      localStorage.setItem("customerName", JSON.stringify(payload));
+    },
+    saveCustomerPhone(state, payload) {
+      state.customerData.customer_phone = payload;
+      localStorage.setItem("customerPhone", JSON.stringify(payload));
+    },
+    saveCustomerAddress(state, payload) {
+      state.customerData.customer_address = payload;
+      localStorage.setItem("customerAddress", JSON.stringify(payload));
+    },
+    saveCustomerEmail(state, payload) {
+      state.customerData.customer_email = payload;
+      localStorage.setItem("customerEmail", JSON.stringify(payload));
+    },
+    cleanData(state) {
+      localStorage.removeItem("carts");
+      localStorage.removeItem("customerName");
+      localStorage.removeItem("customerPhone");
+      localStorage.removeItem("customerAddress");
+      localStorage.removeItem("customerEmail");
+
+      state.cart = [];
+      state.customerData = {
+        customer_name: "",
+        customer_address: "",
+        customer_email: "",
+        customer_phone: "",
+      };
     },
   },
   actions: {},
