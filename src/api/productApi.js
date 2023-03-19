@@ -60,7 +60,7 @@ export const createProduct = async (payload) => {
   try {
     const req = await axios({
       method: "POST",
-      url: `${API_URL}/api/products/`,
+      url: `${API_URL}/api/products`,
       data: payload,
     });
 
