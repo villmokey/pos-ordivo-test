@@ -10,7 +10,7 @@ export const getAllProducts = async (params) => {
   try {
     const req = await axios({
       method: "GET",
-      url: `${API_URL}/api/products?${params}`,
+      url: `${API_URL}/api/products?${params ? params : ""}`,
     });
 
     if (!req.data.status) {

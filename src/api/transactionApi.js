@@ -61,7 +61,7 @@ export const getAllTransactions = async () => {
   try {
     const req = await axios({
       method: "GET",
-      url: `${API_URL}/api/transactions/`,
+      url: `${API_URL}/api/transactions`,
     });
 
     if (!req.data.status) {
