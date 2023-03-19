@@ -38,7 +38,7 @@
           </Field>
         </div>
         <div class="flex flex-col my-5">
-          <Field name="image" v-slot="{ handleChange, errorMessage, meta, handleBlur }">
+          <Field name="image" v-slot="{ handleChange, errorMessage, meta, handleBlur, value }">
             <label class="text-sm">Upload Gambar </label>
             <div class="w-full h-[200px] outline-[#d9d9d9] outline-dashed rounded-lg outline-ifven-gray mt-1 relative text-ifven-gray">
               <div class="w-full h-full flex flex-col justify-center absolute">
@@ -47,8 +47,10 @@
               <input type="file" class="w-full h-full opacity-0" @change="handleChange" @blur="handleBlur" />
             </div>
             <span class="text-red-500 text-xs" v-if="errorMessage && meta.touched">{{ errorMessage }}</span>
+            <div class="flex mt-4" v-if="value">
+              <img :src="renderImage(value)" alt="" class="w-[150px] h-[150px]" />
+            </div>
           </Field>
-          <!-- <img :src="imageSrc" alt="" /> -->
         </div>
         <button class="bg-blue-500 text-white rounded-md w-full p-2">
           <v-icon name="px-loader" class="animate-spin" v-if="loading"></v-icon>
@@ -110,6 +112,13 @@ export default {
       }
 
       this.loading = false;
+    },
+    renderImage(value) {
+      if (value) {
+        return URL.createObjectURL(value);
+      } else {
+        return "https://source.unsplash.com/1600x900/?food";
+      }
     },
   },
 };
